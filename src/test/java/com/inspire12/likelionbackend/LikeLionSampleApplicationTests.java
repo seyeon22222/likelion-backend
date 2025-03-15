@@ -1,4 +1,4 @@
-package com.inspire12.likelionsample;
+package com.inspire12.likelionbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.inspire12.likelionsample;
+package com.inspire12.likelionbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
