@@ -9,9 +9,11 @@ import java.util.concurrent.Executor;
 
 @Configuration
 public class ThreadPoolConfig {
-    private static final int CORE_POOL_SIZE = 10;
-    private static final int MAX_POOL_SIZE = 30;
-    private static final int QUEUE_CAPACITY = 100;
+    private static final int CORE_POOL_SIZE = 2;
+//    private static final int CORE_POOL_SIZE = 10;
+    private static final int MAX_POOL_SIZE = 2;
+//    private static final int MAX_POOL_SIZE = 10;
+
 
     @Bean(name = "customThreadPoolExecutor")
     public Executor customThreadPoolExecutor() {
@@ -20,6 +22,7 @@ public class ThreadPoolConfig {
         threadPoolExecutor.setCorePoolSize(CORE_POOL_SIZE);
         /* thread-pool의 사용할 수 있는 최대 스레드 수를 설정할 수 있다. 기본값 Integer.MAX_VALUE*/
         threadPoolExecutor.setMaxPoolSize(MAX_POOL_SIZE);
+        threadPoolExecutor.setThreadNamePrefix("likelion-");
         return threadPoolExecutor;
     }
 }
