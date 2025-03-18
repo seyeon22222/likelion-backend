@@ -18,6 +18,7 @@ public class ThreadTestController {
     public String hello() throws InterruptedException {
         log.info("hello");
         threadService.executeThreads();
+//        threadService.executeAsync();
         return "hello";
     }
 }

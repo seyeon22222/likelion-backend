@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.Executor;
@@ -15,8 +16,10 @@ import java.util.concurrent.Executor;
 public class ThreadService {
     private final @Qualifier("customThreadPoolExecutor") Executor executor;
     private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final ThreadAsyncService threadAsyncService;
 
     public void executeThreads() {
+        log.info("executing Exec Thread Name .. [{}]", Thread.currentThread().getName());
         Runnable runnable = () -> {
             try {
                 log.info("executing Thread Name .. [{}]", Thread.currentThread().getName());
@@ -27,6 +30,13 @@ public class ThreadService {
         };
         for (int i = 0; i < 10; i++) {
             executor.execute(runnable);
+        }
+    }
+
+    public void executeAsync() {
+        log.info("executing Async Thread Name .. [{}]", Thread.currentThread().getName());
+        for (int i = 0; i < 10; i++) {
+            threadAsyncService.getHello();
         }
     }
 }
