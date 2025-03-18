@@ -17,7 +17,7 @@ public class ThreadTestController {
     @GetMapping
     public String hello() throws InterruptedException {
         log.info("hello");
-        threadService.executeThreads();
+        threadService.executeAsync();
 //        threadService.executeAsync();
         return "hello";
     }

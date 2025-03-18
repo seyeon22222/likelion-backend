@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class ThreadAsyncService {
     private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
-    @Async
+//    @Async
     public void getHello(){
         log.info("executing Thread Name .. [{}]", Thread.currentThread().getName());
         try {
