@@ -50,18 +50,19 @@ jobs:
           source: "*.jar"
           target: "/home/${{ secrets.SERVER_USER }}/deploy"
 
+
   deploy:
     name: Deploy Application
     needs: send
     runs-on: ubuntu-latest
 
     steps:
-      - name: SSH and Run JAR
+      - name: Execute deploy.sh on Server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            pkill -f 'java -jar' || true
-            nohup java -jar /home/${{ secrets.SERVER_USER }}/deploy/*.jar > app.log 2>&1 &
+            chmod +x /home/${{ secrets.SERVER_USER }}/deploy/deploy.sh
+            /home/${{ secrets.SERVER_USER }}/deploy/deploy.sh
