@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.service;
+package com.inspire12.likelionbackend.service.core;
 
 import com.inspire12.likelionbackend.config.CustomEnvProperties;
 import lombok.RequiredArgsConstructor;
