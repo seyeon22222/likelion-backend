@@ -65,4 +65,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             chmod +x /home/${{ secrets.SERVER_USER }}/deploy/deploy.sh
-            /home/${{ secrets.SERVER_USER }}/deploy/deploy.sh
+            sh /home/${{ secrets.SERVER_USER }}/deploy/deploy.sh
