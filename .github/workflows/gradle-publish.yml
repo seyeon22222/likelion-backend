@@ -67,5 +67,5 @@ jobs:
         with:
           username: ${{ secrets.SERVER_USERNAME }}
           host: ${{ secrets.SERVER_HOST }}
-          key: ${{ secrets.PRIVATE_KEY }}
+          password: ${{ secrets.SERVER_PASSWORD }}
           script: cd /home/${{ secrets.SERVER_USERNAME }}/deploy && chmod +x deploy.sh && ./deploy.sh
