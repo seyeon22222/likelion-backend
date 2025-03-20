@@ -18,10 +18,14 @@ public class OrderService {
 
     public OrderResponse getOrderById(Long orderId) {
 
-        OrderEntity orderEntity = orderJpaRepository.findById(orderId)
+//        OrderEntity orderEntity = orderJpaRepository.findById(orderId)
+//                .orElseThrow(RuntimeException::new);
+        OrderEntity orderEntity = orderJpaRepository.findByOrderId(orderId)
                 .orElseThrow(RuntimeException::new);
 
         OrderResponse orderResponse = OrderResponse.builder()
+                .customerId(orderEntity.getCustomerId())
+                .updatedAt(orderEntity.getUpdatedAt())
                 .orderStatus(orderEntity.getOrderStatus())
                 .orderNumber(orderEntity.getOrderNumber())
                 .build();
@@ -34,6 +38,7 @@ public class OrderService {
         OrderEntity order = orderJpaRepository.save(OrderEntity.builder()
                 .customerId(userId)
                 .orderStatus(OrderStatus.PENDING_PAYMENT)
+                .updatedAt(LocalDateTime.now())
                 .orderNumber(UUID.randomUUID()).build());
         return OrderResponse.builder()
                 .customerId(order.getCustomerId())
