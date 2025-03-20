@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.config;
+package com.inspire12.likelionbackend.config.core;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

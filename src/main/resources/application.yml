@@ -9,9 +9,33 @@ server:
     connection-timeout: 20000
 
 
+
 spring:
-  application:
-    name: likelion-backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/likelion?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: likelion
+    password: likelion
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:schema.sql
+#  session:
+#    jdbc:
+#      initialize-schema: always
+
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: info
 
 custom:
   env: ${CUSTOM_ENV:dev}

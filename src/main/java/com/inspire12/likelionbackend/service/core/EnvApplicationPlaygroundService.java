@@ -1,6 +1,6 @@
 package com.inspire12.likelionbackend.service.core;
 
-import com.inspire12.likelionbackend.config.CustomEnvProperties;
+import com.inspire12.likelionbackend.config.core.CustomEnvProperties;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

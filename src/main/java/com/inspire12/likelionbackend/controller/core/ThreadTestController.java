@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.controller;
+package com.inspire12.likelionbackend.controller.core;
 
 import com.inspire12.likelionbackend.service.core.ThreadService;
 import lombok.RequiredArgsConstructor;

@@ -1,3 +1,4 @@
+use likelion;
 CREATE DATABASE IF NOT EXISTS `likelion`;
 USE `likelion`;
 
