@@ -15,13 +15,17 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderJpaRepository orderJpaRepository;
+//    private final OrderJpaEntityRepository orderJpaEntityRepository;
 
     public OrderResponse getOrderById(Long orderId) {
 
-//        OrderEntity orderEntity = orderJpaRepository.findById(orderId)
-//                .orElseThrow(RuntimeException::new);
-        OrderEntity orderEntity = orderJpaRepository.findByOrderId(orderId)
+        OrderEntity orderEntity = orderJpaRepository.findById(orderId)
                 .orElseThrow(RuntimeException::new);
+//        OrderEntity orderEntity = orderJpaRepository.findByOrderId(orderId)
+//                .orElseThrow(RuntimeException::new);
+
+//        OrderEntity orderEntity = orderJpaEntityRepository.findByOrderId(orderId)
+//                .orElseThrow(RuntimeException::new);
 
         OrderResponse orderResponse = OrderResponse.builder()
                 .customerId(orderEntity.getCustomerId())
