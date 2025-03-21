@@ -20,7 +20,7 @@ public class OrderRepositoryAdapter implements OrderRepository {
     @Override
     public Order getOrderById(Long orderId) {
         if (statusPort.getStoreOpenStatus(orderId)) {
-            return OrderFactory();
+            return OrderFactory.create();
         }
         throw new OrderNotExistException();
     }
