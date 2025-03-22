@@ -4,7 +4,6 @@ import com.inspire12.likelionbackend.exception.OrderNotExistException;
 import com.inspire12.likelionbackend.module.order.application.port.out.StoreStatusPort;
 import com.inspire12.likelionbackend.module.order.domain.Order;
 import com.inspire12.likelionbackend.module.order.domain.OrderRepository;
-import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,7 +19,7 @@ public class OrderRepositoryAdapter implements OrderRepository {
     @Override
     public Order getOrderById(Long orderId) {
         if (statusPort.getStoreOpenStatus(orderId)) {
-            return OrderFactory();
+//            return OrderFactory.createOrder(orderId);
         }
         throw new OrderNotExistException();
     }
