@@ -5,9 +5,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderRepository {
-
-    Order getOrderById(Long orderId);
-
+    Order getOrderByOrderId(Long orderId);
+    Order getOrderByCustomerId(Long customerId);
 
     Order getOrderByOrderNumber(String orderNumber);
 }

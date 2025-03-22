@@ -18,8 +18,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public Order getOrder(@RequestParam Long orderId) {
-        return orderUsecase.getOrderById(orderId);
+    public OrderResponse getOrder(@RequestParam Long orderId) {
+        return orderUsecase.getOrderByOrderId(orderId);
     }
 
     /**
@@ -32,7 +32,7 @@ public class OrderController {
     public OrderResponse doOrder(@RequestBody OrderRequest orderRequest) {
         // Process the order request using the order service
 
-        Order order = orderUsecase.orderToPayment(orderRequest);
+        Order order = orderUsecase.confirmOrderPaymentCase2(orderRequest);
         OrderResponse orderResponse = OrderResponse.builder()
                 .orderStatus(order.getOrderStatus())
                 .orderNumber(order.getOrderNumber())
