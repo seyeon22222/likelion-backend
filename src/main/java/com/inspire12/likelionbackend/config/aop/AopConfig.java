@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.config;
+package com.inspire12.likelionbackend.config.aop;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

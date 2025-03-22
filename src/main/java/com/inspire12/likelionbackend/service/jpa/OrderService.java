@@ -1,6 +1,7 @@
 package com.inspire12.likelionbackend.service.jpa;
 
-import com.inspire12.likelionbackend.config.TransactionExecutor;
+import com.inspire12.likelionbackend.config.core.TransactionExecutor;
+import com.inspire12.likelionbackend.context.UserContextHolder;
 import com.inspire12.likelionbackend.model.entity.OrderEntity;
 import com.inspire12.likelionbackend.model.entity.OrderStatus;
 import com.inspire12.likelionbackend.model.response.OrderResponse;
@@ -53,7 +54,10 @@ public class OrderService {
 
     @Transactional
     public OrderResponse saveOrderByUserId(Long userId) {
-        log.info("request save order by userId: {}", userId);
+
+        String username = UserContextHolder.getUser();
+
+        log.info("request save order by userId: {} username: {}", userId, username);
         OrderEntity orderEntity = OrderEntity.builder()
                 .customerId(userId)
                 .orderStatus(OrderStatus.PENDING_PAYMENT)
