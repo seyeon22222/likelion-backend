@@ -3,10 +3,7 @@ package com.inspire12.likelionbackend.module.order.domain;
 import com.inspire12.likelionbackend.module.order.domain.constant.DeliveryStatus;
 import com.inspire12.likelionbackend.module.order.domain.constant.OrderStatus;
 import com.inspire12.likelionbackend.module.order.domain.constant.OrderType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
@@ -19,6 +16,7 @@ import java.util.UUID;
 public class Order {
     private Long id;
 
+    @Setter
     private OrderStatus orderStatus;
 
     private UUID orderNumber;
@@ -42,5 +40,14 @@ public class Order {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+
+    public void approvePayment(boolean isPaymentSuccess) {
+        if (isPaymentSuccess) {
+            this.setOrderStatus(OrderStatus.SUCCESS_PAYMENT);
+        } else {
+            this.setOrderStatus(OrderStatus.FAIL_PAYMENT);
+        }
+    }
 
 }
