@@ -1,8 +1,8 @@
 package com.inspire12.likelionbackend.module.order.domain;
 
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.DeliveryStatus;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderStatus;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderType;
+import com.inspire12.likelionbackend.module.order.domain.constant.DeliveryStatus;
+import com.inspire12.likelionbackend.module.order.domain.constant.OrderStatus;
+import com.inspire12.likelionbackend.module.order.domain.constant.OrderType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
