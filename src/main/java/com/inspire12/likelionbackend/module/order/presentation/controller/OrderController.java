@@ -4,6 +4,7 @@ import com.inspire12.likelionbackend.module.order.application.dto.OrderRequest;
 import com.inspire12.likelionbackend.module.order.application.dto.OrderResponse;
 import com.inspire12.likelionbackend.module.order.application.service.OrderService;
 import com.inspire12.likelionbackend.module.order.domain.Order;
+import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,8 +19,9 @@ public class OrderController {
     }
 
     @GetMapping
-    public Order getOrder(@RequestParam Long orderId) {
-        return orderUsecase.getOrderById(orderId);
+    public OrderResponse getOrder(@RequestParam Long orderId) {
+        Order order = orderUsecase.getOrderById(orderId);
+        return OrderFactory.createOrderResponse(order);
     }
 
     /**
@@ -31,14 +33,8 @@ public class OrderController {
     @PostMapping
     public OrderResponse doOrder(@RequestBody OrderRequest orderRequest) {
         // Process the order request using the order service
-
         Order order = orderUsecase.orderToPayment(orderRequest);
-        OrderResponse orderResponse = OrderResponse.builder()
-                .orderStatus(order.getOrderStatus())
-                .orderNumber(order.getOrderNumber())
-                .build();
-
         // Return a confirmation string
-        return orderResponse;
+        return OrderFactory.createOrderResponse(order);
     }
 }

@@ -4,6 +4,7 @@ import com.inspire12.likelionbackend.module.order.infrastructure.repository.enti
 import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderStatus;
 import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -11,6 +12,7 @@ import org.springframework.lang.Nullable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
