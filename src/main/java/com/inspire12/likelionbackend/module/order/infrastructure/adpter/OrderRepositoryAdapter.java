@@ -27,6 +27,8 @@ public class OrderRepositoryAdapter implements OrderRepository {
 
     @Override
     public Order getOrderByOrderNumber(String orderNumber) {
+//        OrderEntity orderEntity = orderJpaRepository.findByOrderNumber(orderNumber).orElseThrow(OrderNotExistException::new);
+//        return OrderFactory.createOrder(orderEntity);
         throw new OrderNotExistException();
     }
 }
