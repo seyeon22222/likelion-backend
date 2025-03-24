@@ -2,7 +2,15 @@ package com.inspire12.likelionbackend.module.order.application.dto;
 
 
 import com.inspire12.likelionbackend.module.order.domain.constant.OrderType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-// TODO menu 목록은 cart에 저장된 정보로 가져올지 바로 요청을 받을지
-public record OrderRequest(long customerId, long storeId, OrderType orderType) {
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderRequest {
+    private long customerId;
+    private long storeId;
+    private OrderType orderType;
 }

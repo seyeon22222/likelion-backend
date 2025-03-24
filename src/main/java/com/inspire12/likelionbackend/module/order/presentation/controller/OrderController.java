@@ -3,8 +3,6 @@ package com.inspire12.likelionbackend.module.order.presentation.controller;
 import com.inspire12.likelionbackend.module.order.application.dto.OrderRequest;
 import com.inspire12.likelionbackend.module.order.application.dto.OrderResponse;
 import com.inspire12.likelionbackend.module.order.application.service.OrderService;
-import com.inspire12.likelionbackend.module.order.domain.Order;
-import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -20,8 +18,12 @@ public class OrderController {
 
     @GetMapping
     public OrderResponse getOrder(@RequestParam Long orderId) {
-        Order order = orderUsecase.getOrderById(orderId);
-        return OrderFactory.createOrderResponse(order);
+        return orderUsecase.getOrderById(orderId);
+    }
+
+    @GetMapping("/number")
+    public OrderResponse getOrder(@RequestParam String orderNumber) {
+        return orderUsecase.getOrderByOrderNumber(orderNumber);
     }
 
     /**
@@ -31,10 +33,8 @@ public class OrderController {
      * @return a string indicating the outcome of the order process
      */
     @PostMapping
-    public OrderResponse doOrder(@RequestBody OrderRequest orderRequest) {
+    public OrderResponse saveOrder(@RequestBody OrderRequest orderRequest) {
         // Process the order request using the order service
-        Order order = orderUsecase.orderToPayment(orderRequest);
-        // Return a confirmation string
-        return OrderFactory.createOrderResponse(order);
+        return orderUsecase.save(orderRequest);
     }
 }
