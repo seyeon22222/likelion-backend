@@ -1,10 +1,8 @@
-package com.inspire12.likelionbackend.core.thread.service;
+package com.inspire12.likelionbackend.module.core.thread.service;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 

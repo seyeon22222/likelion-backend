@@ -1,15 +1,12 @@
-package com.inspire12.likelionbackend.core.thread.config;
+package com.inspire12.likelionbackend.module.core.thread.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
-@EnableAsync
-@Configuration
+//@EnableAsync
+//@Configuration
 public class ThreadPoolConfig {
     private static final int CORE_POOL_SIZE = 2;
 //    private static final int CORE_POOL_SIZE = 10;
@@ -17,15 +14,14 @@ public class ThreadPoolConfig {
 //    private static final int MAX_POOL_SIZE = 10;
 
 
-    @Bean(name = "customThreadPoolExecutor")
+//    @Bean(name = "customThreadPoolExecutor")
     public Executor customThreadPoolExecutor() {
         ThreadPoolTaskExecutor threadPoolExecutor = new ThreadPoolTaskExecutor();
 
         // 기본적으로 유지되는 최소 스레드 개수 설정 (항상 유지)
         threadPoolExecutor.setCorePoolSize(CORE_POOL_SIZE);
 
-        // 요청이 많아질 경우 최대 생성 가능한 스레드 개수 설정
-        /* thread-pool의 사용할 수 있는 최대 스레드 수를 설정할 수 있다. 기본값 Integer.MAX_VALUE*/
+        // thread-pool의 사용할 수 있는 최대 스레드 수를 설정할 수 있다. 기본값 Integer.MAX_VALUE
         threadPoolExecutor.setMaxPoolSize(MAX_POOL_SIZE);
 
         // ThreadPool에서 생성되는 스레드 이름의 접두사(prefix)
