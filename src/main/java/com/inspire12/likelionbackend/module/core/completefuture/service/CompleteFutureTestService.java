@@ -47,7 +47,7 @@ public class CompleteFutureTestService {
         };
         CompletableFuture.supplyAsync(/* TODO */)
                 .thenApply(/* TODO */)
-                .thenAccept();
+                .thenAccept(/* TODO */);
     }
 
     public String getHelloSync() {
