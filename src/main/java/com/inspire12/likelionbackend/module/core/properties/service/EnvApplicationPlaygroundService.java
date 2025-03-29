@@ -1,7 +1,7 @@
 package com.inspire12.likelionbackend.module.core.properties.service;
 
 import com.inspire12.likelionbackend.module.core.properties.config.CustomEnvProperties;
-import com.inspire12.likelionbackend.module.core.properties.config.SpringNameProperties;
+import com.inspire12.likelionbackend.module.core.properties.config.ServerPortProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,14 +13,14 @@ public class EnvApplicationPlaygroundService {
     private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     private final CustomEnvProperties customEnvProperties;
-    private final SpringNameProperties springNameProperties;
+    private final ServerPortProperties serverPortProperties;
 
     @Value("${custom.env}")
     private String env;
 
-    public EnvApplicationPlaygroundService(CustomEnvProperties customEnvProperties, SpringNameProperties springNameProperties) {
+    public EnvApplicationPlaygroundService(CustomEnvProperties customEnvProperties, ServerPortProperties serverPortProperties) {
         this.customEnvProperties = customEnvProperties;
-        this.springNameProperties = springNameProperties;
+        this.serverPortProperties = serverPortProperties;
     }
 
     public String getCustomValue() {
@@ -31,11 +31,11 @@ public class EnvApplicationPlaygroundService {
     }
 
 
-    public String getApplicationName() {
+    public String getServerPort() {
 
         log.info("env : {}", env);
-        log.info("env : {}", springNameProperties.getApplication().getName());
-        return springNameProperties.getApplication().getName();
+        log.info("env : {}", serverPortProperties.getPort());
+        return serverPortProperties.getPort();
     }
 
 }

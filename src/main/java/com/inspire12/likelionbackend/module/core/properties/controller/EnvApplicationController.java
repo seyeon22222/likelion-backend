@@ -19,8 +19,8 @@ public class EnvApplicationController {
         return envApplicationPlaygroundService.getCustomValue();
     }
 
-    @GetMapping("/name")
+    @GetMapping("/port")
     public String geApplicationName() {
-        return envApplicationPlaygroundService.getApplicationName();
+        return envApplicationPlaygroundService.getServerPort();
     }
 }

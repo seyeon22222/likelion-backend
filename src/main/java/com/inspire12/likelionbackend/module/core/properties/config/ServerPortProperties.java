@@ -8,18 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(
-        prefix = "spring",
+        prefix = "server",
         ignoreUnknownFields = true
 )
 @Getter
 @Setter // 필요
-public class SpringNameProperties {
+public class ServerPortProperties {
 
-    private ApplicationName application;
-
-    @Getter
-    @Setter
-    public static class ApplicationName {
-        String name;
-    }
+    private String port;
 }
