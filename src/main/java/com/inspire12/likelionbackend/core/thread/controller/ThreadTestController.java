@@ -1,6 +1,6 @@
-package com.inspire12.likelionbackend.controller;
+package com.inspire12.likelionbackend.core.thread.controller;
 
-import com.inspire12.likelionbackend.service.ThreadService;
+import com.inspire12.likelionbackend.core.thread.service.ThreadService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

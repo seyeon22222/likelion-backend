@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.service;
+package com.inspire12.likelionbackend.core.thread.service;
 
 
 import org.slf4j.Logger;
