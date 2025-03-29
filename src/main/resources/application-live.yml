@@ -15,6 +15,6 @@ spring:
 
 custom:
   env: live
-  #  env: ${CUSTOM_ENV:dev}
+#  env: ${CUSTOM_ENV:live}
 
 

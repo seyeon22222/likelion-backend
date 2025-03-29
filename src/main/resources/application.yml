@@ -13,7 +13,8 @@ spring:
     name: likelion-backend
 
 custom:
-  env: ${CUSTOM_ENV:local}
+  env: local
+#  env: ${CUSTOM_ENV:local}
 
 
 
