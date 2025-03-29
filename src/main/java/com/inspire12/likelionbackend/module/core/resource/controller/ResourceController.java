@@ -1,14 +1,15 @@
 package com.inspire12.likelionbackend.module.core.resource.controller;
 
 
+import com.inspire12.likelionbackend.module.core.resource.model.ResourceRequest;
 import com.inspire12.likelionbackend.module.core.resource.service.ResourceService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-@RequestMapping("/load")
+@RequestMapping("/resource")
 @RestController
 public class ResourceController {
 
@@ -18,8 +19,22 @@ public class ResourceController {
         this.resourceService = resourceService;
     }
 
-    @GetMapping
+    @GetMapping("/load")
     public String load(String resourceName) throws IOException {
         return resourceService.load(resourceName);
+    }
+
+    @PostMapping("/write")
+    public String write(@RequestBody ResourceRequest resourceRequest)  {
+        throw new UnsupportedOperationException("classpath 형태에선 권장되지 않음");
+    }
+
+    @GetMapping("/load/image")
+    public ResponseEntity<byte[]> loadImage() throws IOException {
+        byte[] imageBytes = resourceService.loadImage("oh.jpg");
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_PNG)
+                .body(imageBytes);
     }
 }
