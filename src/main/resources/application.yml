@@ -8,13 +8,12 @@ server:
     accept-count: 1
     connection-timeout: 20000
 
-
 spring:
   application:
     name: likelion-backend
 
 custom:
-  env: ${CUSTOM_ENV:dev}
+  env: ${CUSTOM_ENV:local}
 
 
 

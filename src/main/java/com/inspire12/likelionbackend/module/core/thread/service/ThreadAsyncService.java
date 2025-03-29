@@ -19,4 +19,15 @@ public class ThreadAsyncService {
             throw new RuntimeException(e);
         }
     }
+
+//    @Async
+    public String getHelloWaitResponse(){
+        log.info("executing Thread Name .. [{}]", Thread.currentThread().getName());
+        try {
+            Thread.sleep(1000); // 1초간 정지
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return "hello";
+    }
 }

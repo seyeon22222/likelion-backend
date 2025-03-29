@@ -1,8 +1,6 @@
-package com.inspire12.likelionbackend.config;
+package com.inspire12.likelionbackend.module.core.properties.config;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +8,18 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(
-        prefix = "custom",
+        prefix = "spring",
         ignoreUnknownFields = true
 )
 @Getter
 @Setter // 필요
-public class CustomEnvProperties {
-    private String env;
+public class SpringNameProperties {
+
+    private ApplicationName application;
+
+    @Getter
+    @Setter
+    public static class ApplicationName {
+        String name;
+    }
 }
