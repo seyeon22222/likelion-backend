@@ -1,9 +1,9 @@
-package com.inspire12.likelionbackend.service.jpa;
+package com.inspire12.likelionbackend.module.jpa.service;
 
-import com.inspire12.likelionbackend.model.entity.OrderEntity;
-import com.inspire12.likelionbackend.model.entity.OrderStatus;
-import com.inspire12.likelionbackend.model.response.OrderResponse;
-import com.inspire12.likelionbackend.repository.OrderJpaRepository;
+import com.inspire12.likelionbackend.module.jpa.model.entity.OrderEntity;
+import com.inspire12.likelionbackend.module.jpa.model.entity.OrderStatus;
+import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
+import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

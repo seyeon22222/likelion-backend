@@ -1,8 +1,8 @@
-package com.inspire12.likelionbackend.controller.core;
+package com.inspire12.likelionbackend.module.jpa.controller;
 
-import com.inspire12.likelionbackend.model.request.OrderRequest;
-import com.inspire12.likelionbackend.model.response.OrderResponse;
-import com.inspire12.likelionbackend.service.jpa.OrderService;
+import com.inspire12.likelionbackend.module.jpa.model.request.OrderRequest;
+import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
+import com.inspire12.likelionbackend.module.jpa.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(path = "/order")

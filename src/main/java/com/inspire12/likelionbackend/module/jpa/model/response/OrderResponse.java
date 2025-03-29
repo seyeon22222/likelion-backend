@@ -1,7 +1,7 @@
-package com.inspire12.likelionbackend.model.response;
+package com.inspire12.likelionbackend.module.jpa.model.response;
 
 
-import com.inspire12.likelionbackend.model.entity.OrderStatus;
+import com.inspire12.likelionbackend.module.jpa.model.entity.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

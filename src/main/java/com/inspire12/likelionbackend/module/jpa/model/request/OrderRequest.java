@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.model.request;
+package com.inspire12.likelionbackend.module.jpa.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
