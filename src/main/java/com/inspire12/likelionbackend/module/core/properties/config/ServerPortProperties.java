@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.config.core;
+package com.inspire12.likelionbackend.module.core.properties.config;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(
-        prefix = "custom",
+        prefix = "server",
         ignoreUnknownFields = true
 )
 @Getter
 @Setter // 필요
-public class CustomEnvProperties {
-    private String env;
+public class ServerPortProperties {
+
+    private String port;
 }
