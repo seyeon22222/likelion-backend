@@ -32,7 +32,7 @@ public class OrderController {
     // 주문 조회 API
     @GetMapping
     public ResponseEntity<OrderListResponse> getOrder(
-            @PageableDefault(page = 0, size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
+            @PageableDefault(page = 1, size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
             Pageable pageRequest) {
         OrderListResponse orderByPager = orderService.getOrderByPager(pageRequest);
 

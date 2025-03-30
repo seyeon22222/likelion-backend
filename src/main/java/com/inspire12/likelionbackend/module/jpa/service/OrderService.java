@@ -12,7 +12,6 @@ import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,7 +69,6 @@ public class OrderService {
     }
 
     public OrderListResponse getOrderByPager(Pageable pageable) {
-        Pageable pageable1 = PageRequest.of(0, 0);
         Page<OrderEntity> all = orderJpaRepository.findAll(pageable);
         List<OrderResponse> orderResponses = new ArrayList<>();
         for (OrderEntity orderEntity : all) {
