@@ -2,6 +2,7 @@ package com.inspire12.likelionbackend.module.jpa.controller;
 
 import com.inspire12.likelionbackend.module.jpa.model.request.OrderRequest;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
+import com.inspire12.likelionbackend.module.jpa.model.response.OrderSumResponse;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderSummaryResponse;
 import com.inspire12.likelionbackend.module.jpa.service.OrderService;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +53,12 @@ public class OrderController {
     @GetMapping("/summary")
     public ResponseEntity<OrderSummaryResponse> getOrderSummary(@RequestParam Long customerId) {
         OrderSummaryResponse orderSummaries = orderService.getOrderSummaries(customerId);
+        return ResponseEntity.ok(orderSummaries);
+    }
+
+    @GetMapping("/sum")
+    public ResponseEntity<OrderSumResponse> getOrderSum(@RequestParam Long customerId) {
+        OrderSumResponse orderSummaries = orderService.getOrderSum(customerId);
         return ResponseEntity.ok(orderSummaries);
     }
 

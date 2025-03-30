@@ -4,6 +4,7 @@ import com.inspire12.likelionbackend.module.jpa.model.entity.OrderEntity;
 import com.inspire12.likelionbackend.module.jpa.model.mapper.OrderMapper;
 import com.inspire12.likelionbackend.module.jpa.model.request.OrderRequest;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
+import com.inspire12.likelionbackend.module.jpa.model.response.OrderSumResponse;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderSummaryResponse;
 import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -52,5 +53,9 @@ public class OrderService {
     @Transactional(readOnly = true)
     public OrderSummaryResponse getOrderSummaries(Long customerId) {
         return new OrderSummaryResponse(orderJpaRepository.findOrderSummariesByCustomerId(customerId));
+    }
+
+    public OrderSumResponse getOrderSum(Long customerId) {
+        throw new UnsupportedOperationException();
     }
 }
