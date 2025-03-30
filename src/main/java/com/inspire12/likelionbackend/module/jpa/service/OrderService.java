@@ -9,10 +9,10 @@ import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderSumResponse;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderSummaryResponse;
 import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +22,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class OrderService {
+    @PersistenceContext
+    private EntityManager em;
 
     private final OrderJpaRepository orderJpaRepository;
 
@@ -68,10 +70,17 @@ public class OrderService {
         return new OrderSumResponse(orderSum.getCustomerId(), orderSum.getCount());
     }
 
-    public OrderListResponse getOrderByPager(Pageable pageable) {
-        Page<OrderEntity> all = orderJpaRepository.findAll(pageable);
+
+
+    public OrderListResponse getOrderByPager(int page, int size, String sortBy, String direction) {
+        /**  TODO **/
+        String jpql = "SELECT o FROM OrderEntity o order by o." + sortBy + " " + direction;
+        List<OrderEntity> resultList = em.createQuery(jpql, OrderEntity.class)
+                .setFirstResult(page * size)
+                .setMaxResults(size)
+                .getResultList();
         List<OrderResponse> orderResponses = new ArrayList<>();
-        for (OrderEntity orderEntity : all) {
+        for (OrderEntity orderEntity : resultList) {
             orderResponses.add(OrderMapper.fromEntity(orderEntity));
         }
         return new OrderListResponse(orderResponses);
