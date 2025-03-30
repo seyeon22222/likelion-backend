@@ -1,5 +1,6 @@
 package com.inspire12.likelionbackend.module.mvc.controller;
 
+import com.inspire12.likelionbackend.common.execption.LikelionException;
 import com.inspire12.likelionbackend.module.mvc.model.Customer;
 import com.inspire12.likelionbackend.module.mvc.model.OrderRequest;
 import com.inspire12.likelionbackend.module.mvc.model.OrderResponse;
@@ -18,6 +19,11 @@ import java.time.LocalDateTime;
 public class DataController { // 뜬금 질문, 제가 왜 클래스명을 RestController 로 만들었을까요?
 
     private Logger log = LoggerFactory.getLogger(this.getClass().getName());
+
+    @GetMapping("/throw")
+    public ResponseEntity<OrderResponse> throwException(HttpServletRequest request) {
+        throw new LikelionException();
+    }
 
     @PostMapping("/order/{username}")
     public ResponseEntity<OrderResponse> getOrder(@RequestParam Long id, @PathVariable String username,
