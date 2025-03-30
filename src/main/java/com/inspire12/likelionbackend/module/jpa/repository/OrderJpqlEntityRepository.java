@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class OrderJpaEntityRepository  {
+public class OrderJpqlEntityRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

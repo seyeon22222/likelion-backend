@@ -1,7 +1,5 @@
 package com.inspire12.likelionbackend.module.jpa.service;
 
-import com.inspire12.likelionbackend.module.jpa.model.entity.OrderEntity;
-import com.inspire12.likelionbackend.module.jpa.model.mapper.OrderMapper;
 import com.inspire12.likelionbackend.module.jpa.model.request.OrderRequest;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
 import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
@@ -19,30 +17,26 @@ public class OrderService {
 
     @Transactional(readOnly = true)
     public OrderResponse getOrder(Long orderId) {
-        OrderEntity order = orderJpaRepository.findById(orderId)
-                .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
-        return OrderMapper.fromEntity(order);
+        // TODO
+        throw new EntityNotFoundException("주문 없음");
     }
 
     @Transactional
     public OrderResponse saveOrder(OrderRequest request) {
-        OrderEntity order = OrderMapper.toEntity(request);
-        OrderEntity savedOrder = orderJpaRepository.save(order);
-        return OrderMapper.fromEntity(savedOrder);
+        // TODO
+        throw new EntityNotFoundException("주문 없음");
     }
 
     @Transactional
     public void deleteOrder(Long orderId) {
-        OrderEntity order = orderJpaRepository.findById(orderId)
-                .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
-        orderJpaRepository.delete(order);
+        // TODO
+        throw new EntityNotFoundException("주문 없음");
+
     }
 
     @Transactional
     public OrderResponse updateTotalAmount(Long orderId, Integer newAmount) {
-        OrderEntity order = orderJpaRepository.findById(orderId)
-                .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
-        order.changeTotalAmount(newAmount);
-        return OrderMapper.fromEntity(order);
+        // TODO
+        throw new EntityNotFoundException("주문 없음");
     }
 }
