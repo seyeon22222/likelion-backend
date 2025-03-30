@@ -4,6 +4,7 @@ import com.inspire12.likelionbackend.module.jpa.model.entity.OrderEntity;
 import com.inspire12.likelionbackend.module.jpa.model.mapper.OrderMapper;
 import com.inspire12.likelionbackend.module.jpa.model.request.OrderRequest;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
+import com.inspire12.likelionbackend.module.jpa.model.response.OrderSummaryResponse;
 import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +45,12 @@ public class OrderService {
                 .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
         order.changeTotalAmount(newAmount);
         return OrderMapper.fromEntity(order);
+    }
+
+
+    // 고객 ID로 주문 요약 정보 조회
+    @Transactional(readOnly = true)
+    public OrderSummaryResponse getOrderSummaries(Long customerId) {
+        return new OrderSummaryResponse(orderJpaRepository.findOrderSummariesByCustomerId(customerId));
     }
 }
