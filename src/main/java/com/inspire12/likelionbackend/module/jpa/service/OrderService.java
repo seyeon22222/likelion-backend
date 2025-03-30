@@ -56,6 +56,7 @@ public class OrderService {
     }
 
     public OrderSumResponse getOrderSum(Long customerId) {
+        // TODO
         throw new UnsupportedOperationException();
     }
 }
