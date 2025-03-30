@@ -11,8 +11,13 @@ import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
+    @ExceptionHandler(LikelionException.class)
+    public ResponseEntity<String> handleCustomException(LikelionException e) {
+        log.error("likelion exception", e);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleNoSuchElement(NoSuchElementException e) {
@@ -20,12 +25,6 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage());
     }
 
-    @ExceptionHandler(LikelionException.class)
-    public ResponseEntity<String> handleCustomException(LikelionException e) {
-        log.error("likelion exception", e);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(e.getMessage());
-    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception e) {

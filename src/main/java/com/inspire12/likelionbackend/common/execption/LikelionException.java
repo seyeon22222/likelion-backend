@@ -13,6 +13,7 @@ public class LikelionException extends RuntimeException {
 
     public LikelionException(ErrorCode errorCode) {
         super(errorCode.getMessage());
+
         this.errorCode = errorCode;
     }
 }
