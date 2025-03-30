@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.aspect;
+package com.inspire12.likelionbackend.module.core.aop.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +15,7 @@ public class PerformanceAspect {
 
     // 성능 측정할 메서드 정의 (특정 패키지 내 모든 메서드)
 //    @Pointcut("execution(* com.inspire12..*(..)))
-    @Pointcut("@annotation(com.inspire12.likelionbackend.config.aop.PerformanceCheck) || @within(com.inspire12.likelionbackend.config.aop.PerformanceCheck)")
+    @Pointcut("@annotation(com.inspire12.likelionbackend.module.core.aop.config.PerformanceCheck) || @within(com.inspire12.likelionbackend.module.core.aop.config.PerformanceCheck)")
     public void performanceTarget() {
     }
 

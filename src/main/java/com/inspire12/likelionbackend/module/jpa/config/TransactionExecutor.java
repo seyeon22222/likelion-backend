@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.config;
+package com.inspire12.likelionbackend.module.jpa.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;

@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.config;
+package com.inspire12.likelionbackend.module.jpa.config;
 
 @FunctionalInterface
 public interface ExecuteService<T> {

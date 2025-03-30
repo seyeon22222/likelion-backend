@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.config.aop;
+package com.inspire12.likelionbackend.module.core.aop.config;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Target;
