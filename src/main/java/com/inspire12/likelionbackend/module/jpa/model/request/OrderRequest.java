@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class OrderRequest {
-    Long customerId;
+    private Long customerId;
+    private Integer totalAmount;
 }

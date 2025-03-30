@@ -1,53 +1,48 @@
 package com.inspire12.likelionbackend.module.jpa.service;
 
 import com.inspire12.likelionbackend.module.jpa.model.entity.OrderEntity;
-import com.inspire12.likelionbackend.module.jpa.model.entity.OrderStatus;
+import com.inspire12.likelionbackend.module.jpa.model.mapper.OrderMapper;
+import com.inspire12.likelionbackend.module.jpa.model.request.OrderRequest;
 import com.inspire12.likelionbackend.module.jpa.model.response.OrderResponse;
 import com.inspire12.likelionbackend.module.jpa.repository.OrderJpaRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
 public class OrderService {
 
     private final OrderJpaRepository orderJpaRepository;
-//    private final OrderJpaEntityRepository orderJpaEntityRepository;
 
-    public OrderResponse getOrderById(Long orderId) {
 
-        OrderEntity orderEntity = orderJpaRepository.findById(orderId)
-                .orElseThrow(RuntimeException::new);
-//        OrderEntity orderEntity = orderJpaRepository.findByOrderId(orderId)
-//                .orElseThrow(RuntimeException::new);
-
-//        OrderEntity orderEntity = orderJpaEntityRepository.findByOrderId(orderId)
-//                .orElseThrow(RuntimeException::new);
-
-        OrderResponse orderResponse = OrderResponse.builder()
-                .customerId(orderEntity.getCustomerId())
-                .updatedAt(orderEntity.getUpdatedAt())
-                .orderStatus(orderEntity.getOrderStatus())
-                .orderNumber(orderEntity.getOrderNumber())
-                .build();
-
-        return orderResponse;
+    @Transactional(readOnly = true)
+    public OrderResponse getOrder(Long orderId) {
+        OrderEntity order = orderJpaRepository.findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
+        return OrderMapper.fromEntity(order);
     }
 
+    @Transactional
+    public OrderResponse saveOrder(OrderRequest request) {
+        OrderEntity order = OrderMapper.toEntity(request);
+        OrderEntity savedOrder = orderJpaRepository.save(order);
+        return OrderMapper.fromEntity(savedOrder);
+    }
 
-    public OrderResponse saveOrderByUserId(Long userId) {
-        OrderEntity order = orderJpaRepository.save(OrderEntity.builder()
-                .customerId(userId)
-                .orderStatus(OrderStatus.PENDING_PAYMENT)
-                .updatedAt(LocalDateTime.now())
-                .orderNumber(UUID.randomUUID()).build());
-        return OrderResponse.builder()
-                .customerId(order.getCustomerId())
-                .orderNumber(order.getOrderNumber())
-                .updatedAt(LocalDateTime.now())
-                .orderStatus(order.getOrderStatus()).build();
+    @Transactional
+    public void deleteOrder(Long orderId) {
+        OrderEntity order = orderJpaRepository.findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
+        orderJpaRepository.delete(order);
+    }
+
+    @Transactional
+    public OrderResponse updateTotalAmount(Long orderId, Integer newAmount) {
+        OrderEntity order = orderJpaRepository.findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("주문 없음"));
+        order.changeTotalAmount(newAmount);
+        return OrderMapper.fromEntity(order);
     }
 }
