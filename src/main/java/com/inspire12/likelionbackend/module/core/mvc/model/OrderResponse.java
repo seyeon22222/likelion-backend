@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.mvc.model;
+package com.inspire12.likelionbackend.module.core.mvc.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

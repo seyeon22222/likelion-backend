@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.mvc.config;
+package com.inspire12.likelionbackend.module.core.mvc.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;

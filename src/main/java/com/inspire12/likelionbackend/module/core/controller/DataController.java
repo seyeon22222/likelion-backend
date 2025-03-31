@@ -1,8 +1,8 @@
-package com.inspire12.likelionbackend.module.mvc.controller;
+package com.inspire12.likelionbackend.module.core.controller;
 
-import com.inspire12.likelionbackend.module.mvc.model.Customer;
-import com.inspire12.likelionbackend.module.mvc.model.OrderRequest;
-import com.inspire12.likelionbackend.module.mvc.model.OrderResponse;
+import com.inspire12.likelionbackend.module.core.mvc.model.Customer;
+import com.inspire12.likelionbackend.module.core.mvc.model.OrderRequest;
+import com.inspire12.likelionbackend.module.core.mvc.model.OrderResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
