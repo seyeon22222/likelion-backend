@@ -1,8 +1,8 @@
-package com.inspire12.likelionbackend.module.mvc.controller;
+package com.inspire12.likelionbackend.module.core.mvc.controller;
 
-import com.inspire12.likelionbackend.module.mvc.model.Customer;
-import com.inspire12.likelionbackend.module.mvc.model.OrderRequest;
-import com.inspire12.likelionbackend.module.mvc.model.OrderResponse;
+import com.inspire12.likelionbackend.module.core.mvc.model.Customer;
+import com.inspire12.likelionbackend.module.core.mvc.model.OrderRequest;
+import com.inspire12.likelionbackend.module.core.mvc.model.OrderResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 
-@RequestMapping(("/rest"))
+@RequestMapping("/rest")
 @RestController
 public class DataController { // 뜬금 질문, 제가 왜 클래스명을 RestController 로 만들었을까요?
 

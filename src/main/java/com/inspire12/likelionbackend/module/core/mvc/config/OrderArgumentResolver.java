@@ -1,6 +1,6 @@
-package com.inspire12.likelionbackend.module.mvc.config;
+package com.inspire12.likelionbackend.module.core.mvc.config;
 
-import com.inspire12.likelionbackend.module.mvc.model.Customer;
+import com.inspire12.likelionbackend.module.core.mvc.model.Customer;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
