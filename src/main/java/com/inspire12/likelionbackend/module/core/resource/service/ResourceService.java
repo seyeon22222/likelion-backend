@@ -27,9 +27,13 @@ public class ResourceService {
 
     public String load(String resourceName) throws IOException {
         // TODO /resource/file/likelion.txt 파일 문구를 리턴
-        InputStream inputStream = resourceLoader.getResource("classpath:file/likelion.txt").getInputStream();
-        String value = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-        return value;
+        Resource resource = resourceLoader.getResource("classpath:file/likelion.txt");
+        if (resource.exists()) {
+            InputStream inputStream = resource.getInputStream();
+            String value = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+            return value;
+        }
+        throw new FileNotFoundException(resourceName);
     }
 
     public byte[] loadImage() throws FileNotFoundException {
