@@ -14,9 +14,7 @@ public class GlobalExceptionHandler {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     @ExceptionHandler(LikelionException.class)
     public ResponseEntity<String> handleCustomException(LikelionException e) {
-        log.error("likelion exception", e);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(e.getMessage());
+        //TODO
     }
 
     @ExceptionHandler(NoSuchElementException.class)
