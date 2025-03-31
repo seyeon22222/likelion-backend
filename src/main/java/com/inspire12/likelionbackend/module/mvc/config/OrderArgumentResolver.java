@@ -6,17 +6,19 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import com.inspire12.likelionbackend.module.mvc.model.Customer;
+
 public class OrderArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         // TODO
-        return true;
-        //        return parameter.getParameterType().equals(Customer.class);
+        return parameter.getParameterType().equals(Customer.class);
     }
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 //       TODO
-        throw new UnsupportedOperationException();
+        Long customerId = Long.parseLong(webRequest.getHeader("user-id"));
+        return new Customer(customerId);
     }
 }
