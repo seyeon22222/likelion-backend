@@ -38,16 +38,25 @@ public class ResourceService {
 
     public byte[] loadImage() throws FileNotFoundException {
         // TODO load를 구현하신 분은 추가로 /resource/file/oh.jpg 이미지 파일 리턴을 해보세요
+        // Resource resource = resourceLoader.getResource("classpath:file/oh.jpg");
+        // if (!resource.exists())
+        //     throw new FileNotFoundException();
+        // byte[] image = null;
+        // try {
+        //     image = resource.getContentAsByteArray();
+        // } catch (IOException e) {
+        //     throw new FileNotFoundException();
+        // }
+        // return image;
         Resource resource = resourceLoader.getResource("classpath:file/oh.jpg");
-        if (!resource.exists())
-            throw new FileNotFoundException();
-        byte[] image = null;
-        try {
-            image = resource.getContentAsByteArray();
-        } catch (IOException e) {
-            throw new FileNotFoundException();
+        if (resource.exists()) {
+            try {
+                return StreamUtils.copyToByteArray(resource.getInputStream());
+            } catch (IOException e) {
+                throw new FileNotFoundException();
+            }
         }
-        return image;
+        throw new FileNotFoundException();
     }
 
 }
