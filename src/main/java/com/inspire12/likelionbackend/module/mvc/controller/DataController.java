@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,9 +41,10 @@ public class DataController { // 뜬금 질문, 제가 왜 클래스명을 RestC
         log.info("body {}", orderRequest);
         log.info("header {}", headers);
         if (id == null || userId == null || orderRequest == null || username == null || customer == null) {
-            return ResponseEntity.status(500).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-
-        return ResponseEntity.ok(new OrderResponse(userId, orderRequest.getProductId(), LocalDateTime.now()));
+        HttpHeaders headers2 = new HttpHeaders();
+        headers2.add("X-Custom-Header", "custom-value");
+        return ResponseEntity.ok().headers(headers2).body(new OrderResponse(userId, orderRequest.getProductId(), LocalDateTime.now()));
     }
 }
