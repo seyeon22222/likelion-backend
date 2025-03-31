@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.mvc.controller;
+package com.inspire12.likelionbackend.module.core.mvc.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.mvc.controller;
+package com.inspire12.likelionbackend.module.core.mvc.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

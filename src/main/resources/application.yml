@@ -44,9 +44,9 @@ spring:
 #      initialize-schema: always
 
 
-logging:
-  level:
-    org.hibernate.type.descriptor.sql: info
+#logging:
+#  level:
+#    org.hibernate.type.descriptor.sql: info
 
 custom:
   env: ${CUSTOM_ENV:dev}
