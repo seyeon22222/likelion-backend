@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.NoSuchElementException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     @ExceptionHandler(LikelionException.class)
     public ResponseEntity<String> handleCustomException(LikelionException e) {
         //TODO
+        log.info("likelion exception", e);
+        return ResponseEntity.status(e.getErrorCode().getStatus()).body(e.getMessage());
     }
 
     @ExceptionHandler(NoSuchElementException.class)

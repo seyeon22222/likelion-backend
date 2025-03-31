@@ -1,5 +1,6 @@
 package com.inspire12.likelionbackend.module.mvc.controller;
 
+import com.inspire12.likelionbackend.common.execption.ErrorCode;
 import com.inspire12.likelionbackend.common.execption.LikelionException;
 import com.inspire12.likelionbackend.module.mvc.model.Customer;
 import com.inspire12.likelionbackend.module.mvc.model.OrderRequest;
@@ -22,7 +23,7 @@ public class DataController { // 뜬금 질문, 제가 왜 클래스명을 RestC
 
     @GetMapping("/throw")
     public ResponseEntity<OrderResponse> throwException(HttpServletRequest request) {
-        throw new LikelionException();
+        throw new LikelionException(ErrorCode.INVALID_REQUEST);
     }
 
     @PostMapping("/order/{username}")
