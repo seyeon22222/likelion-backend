@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 
-@RequestMapping(("/rest"))
+@RequestMapping("/rest")
 @RestController
 public class DataController { // 뜬금 질문, 제가 왜 클래스명을 RestController 로 만들었을까요?
 
@@ -44,6 +44,5 @@ public class DataController { // 뜬금 질문, 제가 왜 클래스명을 RestC
         }
 
         return ResponseEntity.ok(new OrderResponse(userId, orderRequest.getProductId(), LocalDateTime.now()));
-
     }
 }
