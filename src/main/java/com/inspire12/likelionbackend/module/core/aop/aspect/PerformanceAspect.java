@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class PerformanceAspect {
-    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private static final Logger log = LoggerFactory.getLogger("PerformanceAspect");
 
-    // 성능 측정할 메서드 정의 (특정 패키지 내 모든 메서드)
+//     성능 측정할 메서드 정의 (특정 패키지 내 모든 메서드)
 //    @Pointcut("execution(* com.inspire12..*(..)))
     @Pointcut("@annotation(com.inspire12.likelionbackend.module.core.aop.config.PerformanceCheck) || @within(com.inspire12.likelionbackend.module.core.aop.config.PerformanceCheck)")
     public void performanceTarget() {

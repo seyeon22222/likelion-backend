@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.mvc.controller;
+package com.inspire12.likelionbackend.module.core.mvc.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/view")
 public class ViewController {
 
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     @GetMapping
     public String index() {
         log.info("index view");
