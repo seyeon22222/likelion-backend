@@ -13,11 +13,15 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -72,17 +76,18 @@ public class OrderService {
 
 
 
-    public OrderListResponse getOrderByPager(int page, int size, String sortBy, String direction) {
+    public OrderListResponse getOrderByPager(Pageable pageable) {
         /**  TODO **/
-        String jpql = "SELECT o FROM OrderEntity o order by o." + sortBy + " " + direction;
-        List<OrderEntity> resultList = em.createQuery(jpql, OrderEntity.class)
-                .setFirstResult(page * size)
-                .setMaxResults(size)
-                .getResultList();
-        List<OrderResponse> orderResponses = new ArrayList<>();
-        for (OrderEntity orderEntity : resultList) {
-            orderResponses.add(OrderMapper.fromEntity(orderEntity));
-        }
-        return new OrderListResponse(orderResponses);
+        // String jpql = "SELECT o FROM OrderEntity o order by o." + sortBy + " " + direction;
+        // List<OrderEntity> resultList = em.createQuery(jpql, OrderEntity.class)
+        //         .setFirstResult(page * size)
+        //         .setMaxResults(size)
+        //         .getResultList();
+        // List<OrderResponse> orderResponses = new ArrayList<>();
+        // for (OrderEntity orderEntity : resultList) {
+        //     orderResponses.add(OrderMapper.fromEntity(orderEntity));
+        // }
+        Page<OrderEntity> orderEntities = orderJpaRepository.findAllBy(pageable);
+        return new OrderListResponse(orderEntities.stream().map(OrderMapper::fromEntity).collect(Collectors.toList()));
     }
 }
