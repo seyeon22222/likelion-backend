@@ -15,7 +15,7 @@ public class UserContextAspect {
     Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     // UserContext 어노테이션이 붙은 메서드 또는 클래스 대상
-    @Pointcut("@annotation(com.inspire12.likelionbackend.config.aop.UserContext) || @within(com.inspire12.likelionbackend.config.aop.UserContext)")
+    @Pointcut("@annotation(com.inspire12.likelionbackend.module.core.aop.config.UserContext) || @within(com.inspire12.likelionbackend.module.core.aop.config.UserContext)")
     public void userContextTarget() {}
 
     @Around("userContextTarget()")

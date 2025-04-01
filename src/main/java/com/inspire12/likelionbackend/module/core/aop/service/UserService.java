@@ -2,6 +2,7 @@ package com.inspire12.likelionbackend.module.core.aop.service;
 
 import com.inspire12.likelionbackend.module.core.aop.aspect.LogExecutionTime;
 import com.inspire12.likelionbackend.module.core.aop.aspect.UserInputValidate;
+import com.inspire12.likelionbackend.module.core.aop.config.UserContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,11 @@ public class UserService {
         if (!email.endsWith("@example.com")) {
             throw new SecurityException("허용되지 않은 이메일 도메인입니다.");
         }
+    }
+
+    @UserContext
+    public void geUser(Long userId) { // 변경됨
+        log.info("get user id: {}", userId);
+
     }
 }

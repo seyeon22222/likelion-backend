@@ -22,4 +22,12 @@ public class AopController {
 
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/users/{id}")
+    public ResponseEntity<Void> registerUser(@RequestBody UserRequest userRequest,
+                                             @PathVariable Long id) {
+        userService.geUser(id);
+
+        return ResponseEntity.ok().build();
+    }
 }

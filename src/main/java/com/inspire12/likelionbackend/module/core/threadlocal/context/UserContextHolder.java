@@ -19,10 +19,7 @@ public class UserContextHolder {
 
     // Spring Security에서 인증정보 가져오기
     public static String getAuthenticatedUsername() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null && auth.isAuthenticated()) {
-//            return auth.getName();
-//        }
+
         return "Anonymous";
     }
 }
