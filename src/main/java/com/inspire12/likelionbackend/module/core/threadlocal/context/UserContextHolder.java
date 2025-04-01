@@ -1,9 +1,6 @@
 
 package com.inspire12.likelionbackend.module.core.threadlocal.context;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 public class UserContextHolder {
 
     private static final ThreadLocal<String> currentUser = new ThreadLocal<>();
@@ -22,10 +19,10 @@ public class UserContextHolder {
 
     // Spring Security에서 인증정보 가져오기
     public static String getAuthenticatedUsername() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.isAuthenticated()) {
-            return auth.getName();
-        }
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null && auth.isAuthenticated()) {
+//            return auth.getName();
+//        }
         return "Anonymous";
     }
 }
