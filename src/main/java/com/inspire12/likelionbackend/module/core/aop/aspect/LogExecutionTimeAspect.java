@@ -7,10 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+
 @Aspect
 @Component
 public class LogExecutionTimeAspect {
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private static final Logger log = LoggerFactory.getLogger("LogExecutionTimeAspect");
     @Around("@annotation(com.inspire12.likelionbackend.module.core.aop.aspect.LogExecutionTime)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         /*TODO
@@ -19,7 +20,6 @@ public class LogExecutionTimeAspect {
         /* 여기는 함수의 시그니처에 맞춰서 작성해야한다 */
         Object[] args = joinPoint.getArgs();
         String username = (args.length > 0 && args[0] instanceof String) ?  (String) args[0]: "unknown";
-
         log.info("사용자 등록 시작 - username: {}", username);
         long startTime = System.currentTimeMillis();
         Object proceed = joinPoint.proceed();

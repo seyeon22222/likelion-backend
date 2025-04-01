@@ -15,11 +15,6 @@ public class AopController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
-    public void getAllUsers() {
-
-    }
-
 
     @PostMapping("/users")
     public ResponseEntity<Void> registerUser(@RequestBody UserRequest userRequest) {

@@ -13,7 +13,7 @@ public class UserService {
 
     @LogExecutionTime
     @UserInputValidate
-    public void registerUser(String username, String email) {
+    public void registerUser(String username, String email) { // 변경됨
         log.info("DB에 사용자 저장 로직 실행");
     }
 
@@ -34,5 +34,4 @@ public class UserService {
             throw new SecurityException("허용되지 않은 이메일 도메인입니다.");
         }
     }
-
 }
