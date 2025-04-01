@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.core.threadlocal.filter;
+package com.inspire12.likelionbackend.module.core.threadlocal.interceptor;
 
 import ch.qos.logback.core.util.StringUtil;
 import com.inspire12.likelionbackend.module.core.threadlocal.context.UserContextHolder;
