@@ -1,6 +1,6 @@
 package com.inspire12.likelionbackend.module.core.threadlocal.config;
 
-import com.inspire12.likelionbackend.module.core.threadlocal.filter.UserContextInterceptor;
+import com.inspire12.likelionbackend.module.core.threadlocal.interceptor.UserContextInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,6 +15,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userContextInterceptor);
+//        registry.addInterceptor(userContextInterceptor);
     }
 }
