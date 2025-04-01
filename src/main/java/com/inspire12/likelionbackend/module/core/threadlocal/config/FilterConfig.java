@@ -1,4 +1,4 @@
-package com.inspire12.likelionbackend.module.core.security.config;
+package com.inspire12.likelionbackend.module.core.threadlocal.config;
 
 import com.inspire12.likelionbackend.module.core.threadlocal.filter.AuthFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
