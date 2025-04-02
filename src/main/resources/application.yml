@@ -1,31 +1,56 @@
 server:
   port: 8082
+  tomcat:
+    threads:
+      max: 1
+      min-spare: 1
+    max-connections: 1
+    accept-count: 1
+    connection-timeout: 20000
+
+
 
 spring:
   application:
     name: likelion-backend
   datasource:
-    url: jdbc:mysql://localhost:3306/likelion?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/likelion?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: likelion
     password: likelion
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 20000
+#  data:
+#    web:
+#      pageable:
+#        one-indexed-parameters: true
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  metrics:
-    tags:
-      application: app
-    distribution:
-      percentiles-histogram:
-        http:
-          server:
-            requests: 'true'
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:schema.sql
+#  session:
+#    jdbc:
+#      initialize-schema: always
+
+
+#logging:
+#  level:
+#    org.hibernate.type.descriptor.sql: info
+
+custom:
+  env: ${CUSTOM_ENV:dev}
+
+
+

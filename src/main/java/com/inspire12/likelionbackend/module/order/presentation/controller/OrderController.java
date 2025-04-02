@@ -6,8 +6,10 @@ import com.inspire12.likelionbackend.module.order.application.service.OrderServi
 import com.inspire12.likelionbackend.module.order.domain.Order;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 
-@RequestMapping(path = "/order")
+
+@RequestMapping(path = "/ddd/orders")
 @RestController
 public class OrderController {
 
@@ -35,7 +37,7 @@ public class OrderController {
         Order order = orderUsecase.confirmOrderPaymentCase2(orderRequest);
         OrderResponse orderResponse = OrderResponse.builder()
                 .orderStatus(order.getOrderStatus())
-                .orderNumber(order.getOrderNumber())
+                .orderNumber(UUID.fromString(order.getOrderNumber()))
                 .build();
 
         // Return a confirmation string

@@ -12,6 +12,29 @@ server:
 spring:
   application:
     name: likelion-backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/likelion?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: likelion
+    password: likelion
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+#      ddl-auto: create
+    properties:
+      hibernate:
+#        format_sql: true
+        highlight_sql: true
+    show-sql: true
+    open-in-view: false
+
+logging:
+  level:
+    org.springframework.transaction: TRACE
+    org.springframework.orm.jpa: TRACE
+    org.springframework.security: TRACE
+#    org.hibernate.SQL: debug
 
 custom:
 #  env: dev

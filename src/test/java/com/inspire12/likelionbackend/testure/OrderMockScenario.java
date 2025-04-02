@@ -1,7 +1,7 @@
 package com.inspire12.likelionbackend.testure;
 
 import com.inspire12.likelionbackend.module.order.application.dto.OrderRequest;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderType;
+import com.inspire12.likelionbackend.module.order.enums.OrderType;
 
 public class OrderMockScenario {
 

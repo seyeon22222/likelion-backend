@@ -5,7 +5,6 @@ import com.inspire12.likelionbackend.module.order.application.dto.OrderResponse;
 import com.inspire12.likelionbackend.module.order.application.port.out.PaymentPort;
 import com.inspire12.likelionbackend.module.order.domain.Order;
 import com.inspire12.likelionbackend.module.order.domain.OrderRepository;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderStatus;
 import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +24,7 @@ public class OrderService {
         Order order = orderRepository.getOrderByCustomerId(orderRequest.customerId());
         // 결제를 요청해 처리하고
         boolean isPaymentSuccess = paymentPort.processPayment(order);
-        if (isPaymentSuccess) {
-            order.setOrderStatus(OrderStatus.SUCCESS_PAYMENT);
-        } else {
-            order.setOrderStatus(OrderStatus.FAIL_PAYMENT);
-        }
+        order.approvePayment(isPaymentSuccess);
         return order;
     }
 

@@ -1,7 +1,7 @@
 package com.inspire12.likelionbackend.module.order.domain;
 
 import com.inspire12.likelionbackend.module.order.application.dto.OrderRequest;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderStatus;
+import com.inspire12.likelionbackend.module.order.enums.OrderStatus;
 import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
 import com.inspire12.likelionbackend.testure.OrderMockScenario;
 import org.junit.jupiter.api.Test;

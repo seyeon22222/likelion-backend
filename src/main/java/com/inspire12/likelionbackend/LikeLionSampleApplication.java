@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class LikeLionSampleApplication {
-    private static Logger log = LoggerFactory.getLogger("LikeLionSampleApplication");
 
     public static void main(String[] args) {
         SpringApplication.run(LikeLionSampleApplication.class, args);
