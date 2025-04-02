@@ -5,7 +5,8 @@ import com.inspire12.likelionbackend.module.order.application.port.out.StoreStat
 import com.inspire12.likelionbackend.module.order.domain.Order;
 import com.inspire12.likelionbackend.module.order.domain.OrderRepository;
 import com.inspire12.likelionbackend.module.order.infrastructure.repository.OrderJpaRepository;
-import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
+import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderEntity;
+import com.inspire12.likelionbackend.module.order.support.mapper.OrderMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -21,7 +22,8 @@ public class OrderRepositoryAdapter implements OrderRepository {
 
     public Order getOrderByOrderId(Long orderId) {
         if (statusPort.getStoreOpenStatus(orderId)) {
-            return OrderFactory.createOrder(orderJpaRepository.findById(orderId).orElseThrow(OrderNotExistException::new));
+            OrderEntity orderEntity = orderJpaRepository.findById(orderId).orElseThrow(OrderNotExistException::new);
+            return OrderMapper.fromEntity(orderEntity);
         }
         throw new OrderNotExistException();
     }
@@ -29,11 +31,12 @@ public class OrderRepositoryAdapter implements OrderRepository {
 
     @Override
     public Order getOrderByCustomerId(Long customerId) {
-        return OrderFactory.createOrder(orderJpaRepository.findByCustomerId(customerId));
+        return OrderMapper.fromEntity(orderJpaRepository.findByCustomerId(customerId));
     }
 
     @Override
     public Order getOrderByOrderNumber(String orderNumber) {
+        // TODO
         throw new OrderNotExistException();
     }
 }

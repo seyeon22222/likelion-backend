@@ -6,5 +6,5 @@ import lombok.Builder;
 import java.util.UUID;
 
 @Builder
-public record OrderResponse(UUID orderNumber, OrderStatus orderStatus) {
+public record OrderResponse(UUID orderNumber, OrderStatus orderStatus, Long totalAmount) {
 }

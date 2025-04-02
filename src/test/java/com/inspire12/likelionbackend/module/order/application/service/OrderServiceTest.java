@@ -33,7 +33,7 @@ class OrderServiceTest {
         OrderRequest orderRequest = OrderMockScenario.createDeliveryOrderRequest();
         // When
         // 테스트가 실패, 왜?
-        Order order = orderService.confirmOrderPaymentCase1(orderRequest);
+        Order order = orderService.confirmOrderPayment(orderRequest);
         // Then
         assertEquals(OrderStatus.SUCCESS_PAYMENT, order.getOrderStatus());
     }
@@ -44,7 +44,7 @@ class OrderServiceTest {
         OrderRequest orderRequest = OrderMockScenario.createDeliveryOrderRequest();
         // When
         // 테스트가 실패, 왜?
-        Order order = orderService.confirmOrderPaymentCase1(orderRequest);
+        Order order = orderService.confirmOrderPayment(orderRequest);
         // Then
         assertEquals(OrderStatus.SUCCESS_PAYMENT, order.getOrderStatus());
     }
@@ -54,7 +54,7 @@ class OrderServiceTest {
         // Given
         OrderRequest orderRequest = OrderMockScenario.createDeliveryOrderRequest();
         // When
-        Order order = orderService.confirmOrderPaymentCase1(orderRequest);
+        Order order = orderService.confirmOrderPayment(orderRequest);
         // Then
         assertEquals(OrderStatus.FAIL_PAYMENT, order.getOrderStatus());
     }

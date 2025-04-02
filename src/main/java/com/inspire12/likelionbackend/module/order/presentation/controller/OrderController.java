@@ -34,7 +34,7 @@ public class OrderController {
     public OrderResponse doOrder(@RequestBody OrderRequest orderRequest) {
         // Process the order request using the order service
 
-        Order order = orderUsecase.confirmOrderPaymentCase2(orderRequest);
+        Order order = orderUsecase.confirmOrderPayment(orderRequest);
         OrderResponse orderResponse = OrderResponse.builder()
                 .orderStatus(order.getOrderStatus())
                 .orderNumber(UUID.fromString(order.getOrderNumber()))

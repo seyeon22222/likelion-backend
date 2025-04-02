@@ -34,7 +34,7 @@ public class OrderEntity {
     private Long storeId;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private OrderStatus status = OrderStatus.PENDING_PAYMENT;
 
 
     // 변경 메서드 (명시적 메서드로만 수정 허용)

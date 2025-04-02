@@ -1,10 +1,7 @@
 package com.inspire12.likelionbackend.module.order.domain;
 
 import com.inspire12.likelionbackend.module.order.enums.OrderStatus;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +15,7 @@ public class Order {
     private Long storeId;
     private String orderNumber;
     private Integer totalAmount;
+    @Setter
     private OrderStatus orderStatus;
     private LocalDateTime createdAt;
 

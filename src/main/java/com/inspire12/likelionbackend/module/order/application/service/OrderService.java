@@ -5,7 +5,8 @@ import com.inspire12.likelionbackend.module.order.application.dto.OrderResponse;
 import com.inspire12.likelionbackend.module.order.application.port.out.PaymentPort;
 import com.inspire12.likelionbackend.module.order.domain.Order;
 import com.inspire12.likelionbackend.module.order.domain.OrderRepository;
-import com.inspire12.likelionbackend.module.order.support.factory.OrderFactory;
+import com.inspire12.likelionbackend.module.order.enums.OrderStatus;
+import com.inspire12.likelionbackend.module.order.support.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 
 
@@ -19,25 +20,23 @@ public class OrderService {
         this.paymentPort = paymentPort;
     }
 
-    public Order confirmOrderPaymentCase1(OrderRequest orderRequest) {
-        // 주문 도메인 객체를 만들고
-        Order order = orderRepository.getOrderByCustomerId(orderRequest.customerId());
-        // 결제를 요청해 처리하고
-        boolean isPaymentSuccess = paymentPort.processPayment(order);
-        order.approvePayment(isPaymentSuccess);
-        return order;
-    }
 
-    public Order confirmOrderPaymentCase2(OrderRequest orderRequest) {
+    public Order confirmOrderPayment(OrderRequest orderRequest) {
         // 주문 도메인 객체를 만들고
         Order order = orderRepository.getOrderByCustomerId(orderRequest.customerId());
         // 결제를 요청해 처리하고
         boolean isPaymentSuccess = paymentPort.processPayment(order);
-        order.approvePayment(isPaymentSuccess);
+
+        if(isPaymentSuccess) {
+            order.setOrderStatus(OrderStatus.SUCCESS_PAYMENT);
+        } else {
+            order.setOrderStatus(OrderStatus.FAIL_PAYMENT);
+        }
         return order;
     }
 
     public OrderResponse getOrderByOrderId(Long orderId) {
-        return OrderFactory.createResponse(orderRepository.getOrderByOrderId(orderId));
+        Order orderByOrderId = orderRepository.getOrderByOrderId(orderId);
+        return OrderMapper.toResponse(orderByOrderId);
     }
 }
