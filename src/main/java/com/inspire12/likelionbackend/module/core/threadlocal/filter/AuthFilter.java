@@ -13,8 +13,7 @@ public class AuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        String username = request.getHeader("X-USER-NAME");
-        UserContextHolder.setUser(username);
+        // TODO
         try {
             filterChain.doFilter(request, response);
         } finally {
