@@ -1,44 +1,42 @@
 package com.inspire12.likelionbackend.module.order.domain;
 
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.DeliveryStatus;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderStatus;
-import com.inspire12.likelionbackend.module.order.infrastructure.repository.entity.OrderType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
+import com.inspire12.likelionbackend.module.order.enums.OrderStatus;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
+@Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
     private Long id;
-
-    private OrderStatus orderStatus;
-
-    private UUID orderNumber;
-
     private Long customerId;
-
-    private Long totalOrderAmount;
-    private Long totalPayedAmount;
-
     private Long storeId;
-
-    // Delivery
-    private OrderType orderType;
-    @Nullable
-    private Long deliveryId;
-    @Nullable
-    private DeliveryStatus deliveryStatus;
-
-    private Long deliveryPrice = 0L;
-
+    private String orderNumber;
+    private Integer totalAmount;
+    @Setter
+    private OrderStatus orderStatus;
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    public boolean isCancelable() {
+        return this.orderStatus == OrderStatus.ORDERED;
+    }
+    public Order cancel() {
+        if (!isCancelable()) throw new IllegalStateException("이미 처리된 주문은 취소할 수 없습니다.");
+        return new Order(id, customerId, storeId, orderNumber, totalAmount, OrderStatus.CANCELED, createdAt);
+    }
 
+    public Order changeAmount(int newAmount) {
+        return new Order(id, customerId, storeId, orderNumber, newAmount, orderStatus, createdAt);
+    }
+
+
+    public void approvePayment(boolean isPaymentSuccess) {
+        if(isPaymentSuccess) {
+            orderStatus = OrderStatus.SUCCESS_PAYMENT;
+        } else {
+            orderStatus = OrderStatus.FAIL_PAYMENT;
+        }
+    }
 }

@@ -6,8 +6,10 @@ import com.inspire12.likelionbackend.module.order.application.service.OrderServi
 import com.inspire12.likelionbackend.module.order.domain.Order;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 
-@RequestMapping(path = "/order")
+
+@RequestMapping(path = "/ddd/orders")
 @RestController
 public class OrderController {
 
@@ -18,8 +20,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public Order getOrder(@RequestParam Long orderId) {
-        return orderUsecase.getOrderById(orderId);
+    public OrderResponse getOrder(@RequestParam Long orderId) {
+        return orderUsecase.getOrderByOrderId(orderId);
     }
 
     /**
@@ -32,10 +34,10 @@ public class OrderController {
     public OrderResponse doOrder(@RequestBody OrderRequest orderRequest) {
         // Process the order request using the order service
 
-        Order order = orderUsecase.orderToPayment(orderRequest);
+        Order order = orderUsecase.confirmOrderPayment(orderRequest);
         OrderResponse orderResponse = OrderResponse.builder()
                 .orderStatus(order.getOrderStatus())
-                .orderNumber(order.getOrderNumber())
+                .orderNumber(UUID.fromString(order.getOrderNumber()))
                 .build();
 
         // Return a confirmation string

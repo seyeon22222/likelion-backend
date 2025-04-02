@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 @Service
 public class CompleteFutureTestService {
     private final Executor customFutureThreadPoolExecutor;
-    private Logger log = LoggerFactory.getLogger(CompleteFutureTestService.class);
+    private final Logger log = LoggerFactory.getLogger(CompleteFutureTestService.class);
 
     public CompleteFutureTestService(Executor customFutureThreadPoolExecutor) {
         this.customFutureThreadPoolExecutor = customFutureThreadPoolExecutor;

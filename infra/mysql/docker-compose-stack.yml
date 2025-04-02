@@ -1,0 +1,31 @@
+services:
+  mysql:
+    image: mysql:8.0
+#    restart: always
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=likelion
+      - MYSQL_DATABASE=likelion
+      - MYSQL_USER=likelion
+      - MYSQL_PASSWORD=likelion
+    deploy:
+      replicas: 3                 # 컨테이너 인스턴스를 3개로 자동 스케일링
+      update_config:
+        parallelism: 2            # 동시 업데이트할 인스턴스 개수
+        delay: 10s                # 업데이트 간격
+      restart_policy:
+        condition: on-failure     # 실패 시 재시작
+      placement:
+        constraints:
+          - node.role == worker   # 배치 조건 (워커 노드에만 배치)
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "3080:8080"
+
