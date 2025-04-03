@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 로그파일 저장 경로 -->
+    <property name="LOG_DIR" value="./logs/application-%d{yyyy-MM-dd-HH-mm}.%i.log" />
+<!--    <property name="LOG_PATTERN" value="./logs/application-%d{yyyy-MM-dd-HH-mm}.%i.log" />-->
+
+    <!--     CONSOLE 저장-->
     <appender class="ch.qos.logback.core.ConsoleAppender" name="CONSOLE">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
@@ -8,11 +12,11 @@
             </Pattern>
         </layout>
     </appender>
-    <!-- CONSOLE -->
-    <appender class="net.logstash.logback.appender.LogstashTcpSocketAppender" name="logstash">
-        <destination>localhost:5000</destination>
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
-    </appender>
+<!--    &lt;!&ndash; LOGSTASH &ndash;&gt;-->
+<!--    <appender class="net.logstash.logback.appender.LogstashTcpSocketAppender" name="logstash">-->
+<!--        <destination>localhost:5000</destination>-->
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>-->
+<!--    </appender>-->
     <!--     FILE 저장-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR}/application.log</file>
@@ -27,11 +31,10 @@
         </rollingPolicy>
     </appender>
     <logger level="INFO" name="org.hibernate.SQL"/>
-    <property name="LOG_DIR" value="./logs/application-%d{yyyy-MM-dd-HH-mm}.%i.log" />
     <root level="INFO">
         <!--    <appender-ref ref="FILE" />-->
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="logstash"/>
+<!--        <appender-ref ref="logstash"/>-->
     </root>
 </configuration>
