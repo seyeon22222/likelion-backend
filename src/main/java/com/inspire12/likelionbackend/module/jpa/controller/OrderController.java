@@ -12,6 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RequestMapping(path = "/orders")
 @RestController
 public class OrderController {
@@ -36,6 +37,14 @@ public class OrderController {
             Pageable pageRequest) {
         OrderListResponse orderByPager = orderService.getOrderByPager(pageRequest);
 
+        return ResponseEntity.ok(orderByPager);
+    }
+
+    // 주문 조회 API
+    @GetMapping("/items")
+    public ResponseEntity<OrderListResponse> getOrder() {
+        // TODO 구현하기
+        OrderListResponse orderByPager = orderService.getOrderItemsByPager(pageRequest);
         return ResponseEntity.ok(orderByPager);
     }
 

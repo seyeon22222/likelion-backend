@@ -26,6 +26,8 @@ VALUES
     (1, UUID(), 'ORDERED', 25000, 'CREDIT_CARD', '서울특별시 강남구 테헤란로 123', '빨리 와주세요'),
     (2, UUID(), 'PREPARING', 15000, 'KAKAO_PAY', '서울특별시 마포구 서교동 456', null);
 
+
+
 SELECT * FROM orders;
 
 SELECT * FROM orders WHERE order_status = 'ORDERED';

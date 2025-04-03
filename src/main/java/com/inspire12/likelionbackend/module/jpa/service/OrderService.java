@@ -70,6 +70,7 @@ public class OrderService {
 
     public OrderListResponse getOrderByPager(Pageable pageable) {
         Page<OrderEntity> all = orderJpaRepository.findAll(pageable);
+
         List<OrderResponse> orderResponses = new ArrayList<>();
         for (OrderEntity orderEntity : all) {
             orderResponses.add(OrderMapper.fromEntity(orderEntity));
