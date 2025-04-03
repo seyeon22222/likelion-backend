@@ -13,8 +13,8 @@ public class HotPlaceService {
 
     public boolean validate(HotPlace hotPlace) {
         Integer rankings = hotPlaceRankingService.getRankings();
-        if(rankings <= 10) {
-            return (int)hotPlace.getScore() == hotPlace.getScore();
+        if(rankings <= 100) {
+            return hotPlace.getScore() == 5;
         }
         return false;
     }

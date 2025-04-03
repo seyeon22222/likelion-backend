@@ -9,7 +9,7 @@ public class HotPlaceRankingService {
     private Logger log = LoggerFactory.getLogger(HotPlaceRankingService.class);
     public Integer getRankings() {
         log.info("get ranking ");
-        return 1;
+        return 11;
     }
 //    private final HotPlaceOrderRepository hotPlaceOrderRepository;
 

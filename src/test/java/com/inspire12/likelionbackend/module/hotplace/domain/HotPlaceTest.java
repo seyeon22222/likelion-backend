@@ -22,7 +22,6 @@ class HotPlaceTest {
     private HotPlaceService hotPlaceService;
 
 
-//    @MockitoBean
     //TODO MockitoBean 을 적용하고 thenReturn 값을 통해 mock으로 값이 대체됐는지 확인
     private HotPlaceRankingService hotPlaceRankingService;
 
@@ -48,23 +47,20 @@ class HotPlaceTest {
         double score = 1.5;
         HotPlace hotPlace = new HotPlace(score);
         // 의미로는 given.. 실행될때 해당 로직을 거치면 함수를 들어가지말고 thenReturn 값을 내보냄
-        when(hotPlaceRankingService.getRankings()).thenReturn(2);
+
+    }
+
+    @Test
+    @DisplayName("Ranking이 100등 안(99등)에 있을 때 평점이 5점이면 핫플")
+    void 핫플_체크_Ranking_100등_안_평점_5점() {
+        HotPlace hotPlace = new HotPlace(5);
+        // given
+        when(hotPlaceRankingService.getRankings()).thenReturn(99);
 
         // when 실행
         boolean validate = hotPlaceService.validate(hotPlace);
 //        boolean validate = hotPlace.validate();
         // then
         assertFalse(validate);
-    }
-
-    @Test
-    @DisplayName("별점 0.5점도 허용할 것인지?")
-    void 별점_범위인지() {
-        // given
-//        HotPlace hotPlace = new HotPlace();
-
-        // when
-
-        // then
     }
 }
