@@ -13,10 +13,10 @@
         </layout>
     </appender>
 <!--    &lt;!&ndash; LOGSTASH &ndash;&gt;-->
-<!--    <appender class="net.logstash.logback.appender.LogstashTcpSocketAppender" name="logstash">-->
-<!--        <destination>localhost:5000</destination>-->
-<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>-->
-<!--    </appender>-->
+    <appender class="net.logstash.logback.appender.LogstashTcpSocketAppender" name="logstash">
+        <destination>localhost:5000</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
     <!--     FILE 저장-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR}/application.log</file>
@@ -25,8 +25,10 @@
                 %highlight([%-5level]) %cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) : %green([%logger:%line]) - %msg%n
             </Pattern>
         </layout>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${LOG_DIR}/application.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
     </appender>

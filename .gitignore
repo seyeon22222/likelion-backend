@@ -38,3 +38,4 @@ out/
 
 .env
 infra/mysql/db/**
+./logs/**
