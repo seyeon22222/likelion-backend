@@ -13,4 +13,4 @@ COPY . .
 RUN ./gradlew bootJar --no-daemon
 
 # 빌드된 Jar 파일 실행
-ENTRYPOINT ["java", "-jar", "build/libs/likelion-backend-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "build/libs/likelion-backend-0.0.1-SNAPSHOT.jar", "--server.port=${PORT}"]
