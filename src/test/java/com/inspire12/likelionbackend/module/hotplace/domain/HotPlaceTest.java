@@ -23,6 +23,7 @@ class HotPlaceTest {
 
 
     //TODO MockitoBean 을 적용하고 thenReturn 값을 통해 mock으로 값이 대체됐는지 확인
+    @MockitoBean
     private HotPlaceRankingService hotPlaceRankingService;
 
     @Test
