@@ -11,4 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderListResponse {
     List<OrderResponse> orderResponses;
+    private Integer totalElements;
 }

@@ -75,6 +75,16 @@ public class OrderService {
         for (OrderEntity orderEntity : all) {
             orderResponses.add(OrderMapper.fromEntity(orderEntity));
         }
-        return new OrderListResponse(orderResponses);
+        return new OrderListResponse(orderResponses, orderResponses.size());
+    }
+
+    public OrderListResponse getOrderItemsByPager(Pageable pageable) {
+        Page<OrderEntity> all = orderJpaRepository.findAll(pageable);
+
+        List<OrderResponse> orderResponses = new ArrayList<>();
+        for (OrderEntity orderEntity : all) {
+            orderResponses.add(OrderMapper.fromEntity(orderEntity));
+        }
+        return new OrderListResponse(orderResponses, orderResponses.size());
     }
 }
