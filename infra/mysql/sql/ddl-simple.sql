@@ -32,3 +32,8 @@ SELECT customer_id, AVG(total_amount) AS avg_order_amount
 FROM orders
 WHERE customer_id = 1
 GROUP BY customer_id;
+
+create index orders_total_amount_index
+    on orders (total_amount);
+
+explain SELECT * FROM orders WHERE total_amount > 19000;
