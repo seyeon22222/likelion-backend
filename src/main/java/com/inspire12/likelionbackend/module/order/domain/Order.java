@@ -33,10 +33,6 @@ public class Order {
 
 
     public void approvePayment(boolean isPaymentSuccess) {
-        if(isPaymentSuccess) {
-            orderStatus = OrderStatus.SUCCESS_PAYMENT;
-        } else {
-            orderStatus = OrderStatus.FAIL_PAYMENT;
-        }
+        // TODO
     }
 }
