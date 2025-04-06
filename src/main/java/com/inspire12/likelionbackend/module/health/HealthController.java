@@ -22,6 +22,7 @@ public class HealthController {
     public String os() {
         String osName = System.getProperty("os.name");
         log.info("운영체제 이름: " + osName);
+        // TODO API 호출로 docker 컨테이너 내에선 바뀐거 확인
         return "Don't touch me";
     }
 }
