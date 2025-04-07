@@ -23,8 +23,15 @@ public class OrderRepositoryAdapter implements OrderRepository {
     public Order getOrderByOrderId(Long orderId) {
         // TODO:1 가계 도메인한테(책임을 위임해서) 가계가 열렸는지 확인한다
         // TODO:2 가계가 열렸으면 orderId로 주문을 가져와 도메인 객체로 변환해 반환한다
+        OrderEntity orderEntity = orderJpaRepository.findById(orderId).orElseThrow(
+            ()-> new OrderNotExistException("주문이 존재하지 않습니다.")
+        );
 
-        throw new OrderNotExistException();
+        Boolean status = statusPort.getStoreOpenStatus(orderEntity.getStoreId());
+        if (!status) {
+            throw new OrderNotExistException("가계가 열리지 않았습니다.");
+        }
+        return OrderMapper.fromEntity(orderEntity);
     }
 
 
