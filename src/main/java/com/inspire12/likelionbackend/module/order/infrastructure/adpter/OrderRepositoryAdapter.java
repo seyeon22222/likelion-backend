@@ -37,6 +37,6 @@ public class OrderRepositoryAdapter implements OrderRepository {
     @Override
     public Order getOrderByOrderNumber(String orderNumber) {
         // TODO
-        throw new OrderNotExistException();
+        return OrderMapper.fromEntity(orderJpaRepository.findByOrderNumber(orderNumber));
     }
 }
