@@ -13,5 +13,5 @@ RUN ./gradlew clean bootJar --no-daemon -x test
 EXPOSE 8082
 
 #TODO 빌드된 JAR 실행
-ENTRYPOINT ["java", "-jar", "/app/build/libs/gradle-springboot-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/build/libs/likelion-backend-0.0.1-SNAPSHOT.jar"]
 
